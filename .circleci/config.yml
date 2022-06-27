@@ -46,22 +46,33 @@ jobs:
           paths:
             - "./"
 
+
   deploy:
-    docker:
-      - image: cimg/node:14.16
-    working_directory: ~/repo
-    steps:
-      - attach_workspace:
-          at: ~/repo
-      - run:
-          name: Build & Deploy
-          # added skip host key checking to avoid the manual prompt
-          command: |
-            mkdir ~/.ssh/ && echo -e "Host github.com\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
-            git config --global user.email "devhub-deploy@users.noreply.github.com"
-            git config --global user.name "Devhub Deployer"
-            yarn build
-            
+     machine:
+       enabled: true
+     steps:
+       - run:
+           name: Deploy Over SSH
+           command: |
+            ssh -p 65002 u787324618@185.224.137.168
+            cd domains/universaldot.me/public_html/test
+
+  # deploy:
+  #   docker:
+  #     - image: cimg/node:14.16
+  #   working_directory: ~/repo
+  #   steps:
+  #     - attach_workspace:
+  #         at: ~/repo
+  #     - run:
+  #         name: Build & Deploy
+  #         # added skip host key checking to avoid the manual prompt
+  #         command: |
+  #           mkdir ~/.ssh/ && echo -e "Host github.com\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
+  #           git config --global user.email "devhub-deploy@users.noreply.github.com"
+  #           git config --global user.name "Devhub Deployer"
+  #           yarn build
+  #           ssh -p 65002 u787324618@185.224.137.168
 
 workflows:
   version: 2
