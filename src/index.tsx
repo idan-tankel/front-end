@@ -16,7 +16,7 @@ import { store, persistor } from './redux/store';
 // contexts
 import { SettingsProvider } from './contexts/SettingsContext';
 import { CollapseDrawerProvider } from './contexts/CollapseDrawerContext';
-
+import { SubstrateContextProvider } from './substrate-lib';
 //
 import App from './App';
 
@@ -29,7 +29,9 @@ ReactDOM.render(
         <SettingsProvider>
           <CollapseDrawerProvider>
             <BrowserRouter>
-              <App />
+              <SubstrateContextProvider>
+                <App />
+              </SubstrateContextProvider>
             </BrowserRouter>
           </CollapseDrawerProvider>
         </SettingsProvider>

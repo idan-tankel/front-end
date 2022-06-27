@@ -4,11 +4,12 @@
   "version": "3.4.0",
   "description": "Simple React Scripts & Typescript",
   "private": true,
+  "homepage": "/.",
   "scripts": {
     "lint": "eslint --ext .ts,.tsx ./src",
     "lint:fix": "eslint --fix --ext .ts,.tsx ./src",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
     "eject": "react-scripts eject",
     "clear-all": "rm -rf build node_modules",
     "re-start": "rm -rf build node_modules && yarn install && yarn start",
@@ -26,9 +27,11 @@
   },
   "browserslist": {
     "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
+      "chrome >= 67",
+      "edge >= 79",
+      "firefox >= 68",
+      "opera >= 54",
+      "safari >= 14"
     ],
     "development": [
       "last 1 chrome version",
@@ -42,6 +45,16 @@
     "@emotion/styled": "^11.8.1",
     "@iconify/react": "^3.2.1",
     "@mui/material": "^5.6.0",
+    "@polkadot/api": "^7.10.1",
+    "@polkadot/extension-dapp": "^0.42.7",
+    "@polkadot/keyring": "^8.4.1",
+    "@polkadot/networks": "^8.4.1",
+    "@polkadot/types": "^7.10.1",
+    "@polkadot/ui-keyring": "^1.1.1",
+    "@polkadot/ui-settings": "^1.1.1",
+    "@polkadot/util": "^8.4.1",
+    "@polkadot/util-crypto": "^8.4.1",
+    "node-polyfill-webpack-plugin": "^1.1.4",
     "@reduxjs/toolkit": "^1.8.1",
     "change-case": "^4.1.2",
     "date-fns": "^2.28.0",
@@ -61,6 +74,7 @@
     "redux-persist": "^6.0.0",
     "simplebar": "^5.3.6",
     "simplebar-react": "^2.3.6",
+    "stream-browserify": "^3.0.0",
     "stylis": "^4.1.0",
     "stylis-plugin-rtl": "^2.1.1"
   },
@@ -88,6 +102,7 @@
     "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-react-hooks": "4.3.0",
     "prettier": "^2.5.1",
+    "react-app-rewired": "^2.2.1",
     "typescript": "^4.5.5"
   }
 }
