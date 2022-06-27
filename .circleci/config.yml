@@ -50,14 +50,12 @@ jobs:
   deploy:
      machine:
        enabled: true
-     steps:
-        - attach_workspace:
-          at: ~/repo
         - run:
            name: Deploy Over SSH
            command: |
             ssh -p 65002 u787324618@185.224.137.168
-            scp ~/repo/build/* u787324618@185.224.137.168:/domains/universaldot.me/public_html/test
+            cd domains/universaldot.me/public_html/test
+            yarn build
 
   # deploy:
   #   docker:
