@@ -31,6 +31,7 @@ module.exports = function override(config, env) {
     // NOTE: I added this; missing in Substrate template and causes missing module errors;
     extensions: [...config.resolve.extensions, '.ts', '.js'],
   };
+
   config.plugins.push(new NodePolyfillPlugin());
   return config;
 };

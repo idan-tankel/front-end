@@ -4,7 +4,7 @@
   "version": "3.4.0",
   "description": "Simple React Scripts & Typescript",
   "private": true,
-  "homepage": "/.",
+  "homepage": ".",
   "scripts": {
     "lint": "eslint --ext .ts,.tsx ./src",
     "lint:fix": "eslint --fix --ext .ts,.tsx ./src",
