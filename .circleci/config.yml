@@ -51,6 +51,8 @@ jobs:
      machine:
        enabled: true
      steps:
+       - attach_workspace:
+           at: domains/universaldot.me/public_html/test
        - run:
            name: Deploy Over SSH
            command: |
