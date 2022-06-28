@@ -81,7 +81,7 @@ workflows:
   version: 2
   test_deploy:
     jobs:
-      - test:
+      - build:
           filters: *filter-non-gh-pages
       - deploy:
           filters: *filter-only-master
