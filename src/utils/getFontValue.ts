@@ -62,6 +62,7 @@ function useWidth() {
   const theme = useTheme();
   const keys = [...theme.breakpoints.keys].reverse();
   return (
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore not sure what is this
     keys.reduce((output, key) => {
       // eslint-disable-next-line react-hooks/rules-of-hooks

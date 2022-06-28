@@ -6,6 +6,14 @@ import LogoOnlyLayout from '../layouts/LogoOnlyLayout';
 // components
 import LoadingScreen from '../components/LoadingScreen';
 
+// Testing build without lazy loading; also this template has problems as originally empty;
+// import Profile from '../pages/Profile';
+// import Tasks from '../pages/Tasks';
+// import Calendar from '../pages/Calendar';
+// import OrganizationOther from '../pages/OrganizationOther';
+// import OrganizationOwn from '../pages/OrganizationOwn';
+// import NotFound from '../pages/Page404';
+
 // ----------------------------------------------------------------------
 
 const Loadable = (Component: ElementType) => (props: any) => {
