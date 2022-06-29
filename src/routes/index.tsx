@@ -1,5 +1,5 @@
 import { Suspense, lazy, ElementType } from 'react';
-import { Navigate, useRoutes, useLocation } from 'react-router-dom';
+import { Navigate, useLocation, Routes, Route } from 'react-router-dom';
 // layouts
 import DashboardLayout from '../layouts/dashboard';
 import LogoOnlyLayout from '../layouts/LogoOnlyLayout';
@@ -28,42 +28,30 @@ const Loadable = (Component: ElementType) => (props: any) => {
 };
 
 export default function Router() {
-  return useRoutes([
-    {
-      path: '/',
-      element: <Navigate to="/dashboard/profile" replace />,
-    },
-    {
-      path: '/dashboard',
-      element: <DashboardLayout />,
-      children: [
-        { element: <Navigate to="/dashboard/profile" replace />, index: true },
-        { path: 'profile', element: <Profile /> },
-        { path: 'tasks', element: <Tasks /> },
-        { path: 'calendar', element: <Calendar /> },
-        {
-          path: 'organization',
-          children: [
-            {
-              element: <Navigate to="/dashboard/organization/other-organization" replace />,
-              index: true,
-            },
-            { path: 'other-organization', element: <OrganizationOther /> },
-            { path: 'my-organization', element: <OrganizationOwn /> },
-          ],
-        },
-      ],
-    },
-    {
-      path: '*',
-      element: <LogoOnlyLayout />,
-      children: [
-        { path: '404', element: <NotFound /> },
-        { path: '*', element: <Navigate to="/404" replace /> },
-      ],
-    },
-    { path: '*', element: <Navigate to="/404" replace /> },
-  ]);
+  return (
+    <Routes>
+      <Route path="/">
+        <Route path="dashboard" element={<DashboardLayout />}>
+          <Route path="profile" element={<Profile />} />
+          <Route path="tasks" element={<Tasks />} />
+          <Route path="calendar" element={<Calendar />} />
+          <Route path="organization" element={<Calendar />}>
+            <Route path="other-organization" element={<OrganizationOther />} />
+            <Route path="my-organization" element={<OrganizationOwn />} />
+            <Route
+              index
+              element={<Navigate to="/dashboard/organization/other-organization" replace />}
+            />
+          </Route>
+        </Route>
+        <Route index element={<Navigate to="/dashboard/profile" replace />} />
+        <Route path="*" element={<LogoOnlyLayout />}>
+          <Route path="404" element={<NotFound />} />
+          <Route path="*" element={<Navigate to="/404" replace />} />
+        </Route>
+      </Route>
+    </Routes>
+  );
 }
 
 // Dashboard
