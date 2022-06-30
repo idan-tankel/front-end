@@ -50,6 +50,9 @@ jobs:
   deploy:
      executor: my-executor      
      steps:
+       - add_ssh_keys:
+            fingerprints:
+              - $SSH_FINTERPRINT
        - attach_workspace:
            at: "./"
        - run:
