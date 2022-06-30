@@ -48,8 +48,7 @@ jobs:
 
 
   deploy:
-     machine:
-       enabled: true
+     executor: my-executor      
      steps:
        - attach_workspace:
            at: "./"
