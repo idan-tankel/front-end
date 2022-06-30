@@ -81,10 +81,9 @@ jobs:
 
 workflows:
   version: 2
-  test_deploy:
+  build-and-deploy:
     jobs:
-      - build:
-          filters: *filter-non-gh-pages
+      - build
       - deploy:
           # filters: *filter-only-master
           requires:
