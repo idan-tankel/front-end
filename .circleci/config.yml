@@ -83,6 +83,6 @@ workflows:
       - build:
           filters: *filter-non-gh-pages
       - deploy:
-          filters: *filter-only-master
+          # filters: *filter-only-master
           requires:
             - build
