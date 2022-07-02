@@ -48,7 +48,7 @@ jobs:
 
   deploy:
     machine:
-      enabled: true
+      image: "ubuntu-2004:current"
     steps:
       - attach_workspace:
           at: "./"
