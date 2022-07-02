@@ -5,14 +5,14 @@
 
 aliases:
   - &filter-non-gh-pages
-      branches:
-        ignore:
-          - gh-pages
+    branches:
+      ignore:
+        - gh-pages
   - &filter-only-master
-      branches:
-        only:
-          - master
-          - develop
+    branches:
+      only:
+        - master
+        - develop
 
 version: 2
 jobs:
@@ -46,20 +46,20 @@ jobs:
           paths:
             - "./"
 
-
   deploy:
-     machine:
-       enabled: true
-     steps:
-       - attach_workspace:
-           at: "./"
-       - run:
-           name: Deploy Over SSH
-           command: |
+    machine:
+      enabled: true
+    steps:
+      - attach_workspace:
+          at: "./"
+      - run:
+          name: Deploy Over SSH
+          command: |
             ssh -p 65002 u787324618@185.224.137.168
             cd domains/universaldot.me/public_html/test
             yarn build
-
+    # The resource_class feature allows configuring CPU and RAM resources for each job. Different resource classes are available for different executors. https://circleci.com/docs/2.0/configuration-reference/#resourceclass
+    resource_class: large
   # deploy:
   #   docker:
   #     - image: cimg/node:14.16
@@ -76,7 +76,6 @@ jobs:
   #           git config --global user.name "Devhub Deployer"
   #           yarn build
   #           ssh -p 65002 u787324618@185.224.137.168
-
 workflows:
   version: 2
   test_deploy:
