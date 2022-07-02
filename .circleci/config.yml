@@ -47,14 +47,16 @@ jobs:
             - "./"
 
   deploy:
+    version: 2
     machine:
-      image: "ubuntu-2004:current"
+       enabled: true
     steps:
       - attach_workspace:
           at: "./"
       - run:
           name: Deploy Over SSH
           command: |
+            echo "hello world"
             ssh -p 65002 u787324618@185.224.137.168
             cd domains/universaldot.me/public_html/test
             yarn build
