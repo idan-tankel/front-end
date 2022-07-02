@@ -48,11 +48,15 @@ jobs:
 
 
   deploy:
-     executor: my-executor      
+     executor: my-executor
      steps:
        - add_ssh_keys:
             fingerprints:
               - $SSH_FINTERPRINT
+       - run:
+          name: "Testing"
+          command: echo "Hi"
+
        - attach_workspace:
            at: "./"
        - run:
