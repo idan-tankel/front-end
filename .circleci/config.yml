@@ -59,7 +59,7 @@ jobs:
        - run:
            name: Deploy Over SSH
            command: |
-            ssh -p 65002 u787324618@185.224.137.168
+            ssh -p 65002 -o "StrictHostKeyChecking=no" u787324618@185.224.137.168
             cd domains/universaldot.me/public_html/test
             yarn build
 
