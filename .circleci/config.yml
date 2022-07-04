@@ -49,8 +49,7 @@ jobs:
 
   deploy:
      docker:
-       - name: test
-         image: ubuntu-latest
+      - image: cimg/base:2021.04 
      steps:
        - add_ssh_keys:
            fingerprints:
