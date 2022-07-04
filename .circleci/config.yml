@@ -48,9 +48,13 @@ jobs:
 
 
   deploy:
-     machine:
-       enabled: true
+     docker:
+       - name: test
+         image: ubuntu-latest
      steps:
+       - add_ssh_keys:
+           fingerprints:
+           - e9:27:e2:e7:85:1e:6b:d8:c9:77:e7:e4:3e:9a:53:2b
        - attach_workspace:
            at: "./"
        - run:
