@@ -48,9 +48,13 @@ jobs:
 
   deploy:
     version: 2
-    machine:
-       enabled: true
+    docker:
+      
+
     steps:
+      - add_ssh_keys:
+          fingerprints:
+            
       - attach_workspace:
           at: "./"
       - run:
